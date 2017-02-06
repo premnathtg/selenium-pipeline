@@ -1,0 +1,28 @@
+jobs:
+
+  - name: selenium-test-man
+    type: manifest
+    steps:
+      - IN: hub
+      - IN: hub-opts
+        applyTo:
+          - hub
+      - IN: firefox-node-img
+      - IN: chrome-node-img  
+      - IN: selenium-img 
+      - IN: link-opts
+        applyTo:
+          - firefox-node-img
+          - chrome-node-img    
+          - selenium-img
+      - TASK: managed
+    flags:
+      - test-selenium
+
+  - name: selenium-ecs-deploy
+    type: deploy
+    steps:
+      - IN: selenium-test-man
+      - IN: selenium-clu
+      - TASK: managed
+        deployMethod: replace

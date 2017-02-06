@@ -1,0 +1,58 @@
+resources:
+
+  - name: selenium-img
+    type: image
+    integration: studymode-ecr
+    pointer:
+      sourceName: "680976004409.dkr.ecr.us-east-1.amazonaws.com/selenium"
+      isPull: false
+    seed:
+      versionName: "master.12"
+	  
+  - name: hub
+    type: image
+    #integration: docker-hub-integration
+    pointer:
+      sourceName: "selenium/hub"
+      isPull: false
+    seed:
+      versionName: "latest" 
+	  
+  - name: firefox-node-img
+    type: image
+    #integration: docker-hub-integration
+    pointer:
+      sourceName: "selenium/node-firefox"
+      isPull: false
+    seed:
+      versionName: "latest" 
+	  
+  - name: chrome-node-img
+    type: image
+    #integration: docker-hub-integration
+    pointer:
+      sourceName: "selenium/node-chrome"
+      isPull: false
+    seed:
+      versionName: "latest" 
+	  
+  - name: link-opts
+    type: dockerOptions
+    version:
+      links:
+        - hub
+		
+  - name: hub-opts
+    type: dockerOptions
+    version:
+      portMappings:
+        - "0:4444"
+      logConfig:
+        type: "json-file"  
+		
+  - name: selenium-clu
+    type: cluster
+    integration: studymode-aws
+    pointer:
+      sourceName: "selenium-dev"
+      region: "us-east-1" 
