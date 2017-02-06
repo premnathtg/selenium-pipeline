@@ -54,5 +54,5 @@ resources:
     type: cluster
     integration: Amazon-DEV
     pointer:
-      sourceName: "selenium-dev"
+      sourceName: "selenium"
       region: "us-east-1" 
