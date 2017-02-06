@@ -2,7 +2,7 @@ resources:
 
   - name: selenium-img
     type: image
-    integration: studymode-ecr
+    integration: Amazon-ecr
     pointer:
       sourceName: "680976004409.dkr.ecr.us-east-1.amazonaws.com/selenium"
       isPull: false
@@ -52,7 +52,7 @@ resources:
 		
   - name: selenium-clu
     type: cluster
-    integration: studymode-aws
+    integration: Amazon-DEV
     pointer:
       sourceName: "selenium-dev"
       region: "us-east-1" 
